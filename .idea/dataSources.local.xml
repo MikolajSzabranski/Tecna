@@ -2,7 +2,7 @@
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-221.5591.52">
     <data-source name="person" uuid="1698eca9-ea51-42ed-a636-bb2ba5d16d15">
-      <database-info product="H2" version="2.1.212 (2022-04-09)" jdbc-version="4.2" driver-name="H2 JDBC Driver" driver-version="2.1.210 (2022-01-17)" dbms="H2" exact-version="2.1.212" exact-driver-version="2.1">
+      <database-info product="H2" version="2.1.210 (2022-01-17)" jdbc-version="4.2" driver-name="H2 JDBC Driver" driver-version="2.1.210 (2022-01-17)" dbms="H2" exact-version="2.1.210" exact-driver-version="2.1">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
