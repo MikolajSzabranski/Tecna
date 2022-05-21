@@ -172,7 +172,7 @@
     </schema>
     <sequence id="164" parent="163" name="PERSON_SEQUENCE">
       <DataType>BIGINT|0s</DataType>
-      <SequenceIdentity>1(1)..9223372036854775807</SequenceIdentity>
+      <SequenceIdentity>1(38)..9223372036854775807</SequenceIdentity>
     </sequence>
     <table id="165" parent="163" name="PERSON"/>
     <table id="166" parent="163" name="flyway_schema_history"/>
