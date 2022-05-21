@@ -11,16 +11,4 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
-	@Bean
-	CommandLineRunner commandLineRunner(PersonRepository personRepository){
-		return args -> {
-			Person newPerson = new Person(
-					"Antek",
-					"Kowalski",
-					"AntonKov@gmail.com"
-			);
-			personRepository.save(newPerson);
-		};
-	}
 }

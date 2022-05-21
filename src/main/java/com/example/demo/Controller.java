@@ -11,57 +11,47 @@ import java.util.Optional;
 
 @RestController
 public class Controller {
+    private final Service service;
+
     @Autowired
     PersonRepository personRepository;
 
-    @RequestMapping("/Yo")
-    public String temp() {
-        return toString();
+    public Controller(Service service) {
+        this.service = service;
     }
 
     @RequestMapping("/persons")
     public ResponseEntity<List<Person>> getAll() {
-        ;
-        try {
-            List<Person> personList = new ArrayList<Person>();
-            personRepository.findAll().forEach(personList::add);
-            if (personList.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(personList, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return service.getAll();
     }
 
     @RequestMapping("/persons/id/{id}")
     public ResponseEntity<Person> getById(@PathVariable("id") long id) {
-        Optional<Person> personList = personRepository.findById(id);
-        if (personList.isPresent()) {
-            return new ResponseEntity<>(personList.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return service.getById(id);
     }
 
-    @RequestMapping("/persons/add")
-    public ResponseEntity<Person> create(@RequestBody Person person) {
-        String firstName = "";
-        String lastName = "";
-        String mail = "";
-        try {
-            person = new Person(firstName, lastName, mail);
-            personRepository.save(person);
-            return new ResponseEntity<>(person, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PostMapping("/persons/add")
+    public void create(@RequestBody Person person) {
+        service.create(person);
     }
+
+    @PutMapping("persons/up")
+    public ResponseEntity updatePerson(@PathVariable Long id, @RequestBody Person person) {
+        return service.updatePerson(id, person);
+    }
+//    @RequestMapping("/persons/up/{id}/{firstName}/{lastName}/{mail}")
+//    public ResponseEntity<Person> update(@PathVariable("id") long id, @PathVariable String firstName, @PathVariable String lastName, @PathVariable String mail) { //@RequestBody Person person,
+//        return service.update(id, firstName, lastName, mail);
+//    }
 
     @RequestMapping("/{id}")
-    public ResponseEntity deleteClient(@PathVariable Long id) {
-        personRepository.deleteById(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity delete(@PathVariable Long id) {
+        return service.delete(id);
     }
+
+//    @PostMapping
+//    public void addNewPerson(@RequestBody Person person){
+//        service.addNewPerson(person);
+//    }
 }
 
