@@ -2,6 +2,8 @@ package com.example.demo;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Person")
@@ -20,6 +22,9 @@ public class Person {
     private String last_name;
     @Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true)
     private String email;
+    @OneToMany(targetEntity = Groovy.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "FK_Person", referencedColumnName = "id")
+    private List<Groovy> groovies;
 
     public Person(String first_name, String last_name, String email) {
         this.first_name = first_name;
@@ -72,4 +77,11 @@ public class Person {
     }
 
 
+    public List<Groovy> getGroovies() {
+        return groovies;
+    }
+
+    public void setGroovies(List<Groovy> groovies) {
+        this.groovies = groovies;
+    }
 }

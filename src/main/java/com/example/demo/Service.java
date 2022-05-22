@@ -40,7 +40,8 @@ public class Service {
         }
     }
 
-    public void create(Person person){
+    public void create(String first, String last, String email){
+        Person person = new Person(first,last,email);
         Optional<Person> findPersonByEmail=personRepository.findPersonByEmail(person.getEmail());
         if (findPersonByEmail.isPresent()){
             throw new IllegalStateException("email taken");

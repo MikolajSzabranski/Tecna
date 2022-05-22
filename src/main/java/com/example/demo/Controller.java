@@ -1,13 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class Controller {
@@ -20,7 +18,7 @@ public class Controller {
         this.service = service;
     }
 
-    @RequestMapping("/persons")
+    @GetMapping("/persons")
     public ResponseEntity<List<Person>> getAll() {
         return service.getAll();
     }
@@ -30,12 +28,13 @@ public class Controller {
         return service.getById(id);
     }
 
-    @PostMapping("/persons/add")
-    public void create(@RequestBody Person person) {
-        service.create(person);
+   @PostMapping(value = "/persons/add")
+    public String create(@ModelAttribute Person person, Model model) {
+        model.addAttribute("add", person);
+        return "persons";
     }
 
-    @PutMapping("persons/up")
+    @PutMapping("/persons/up")
     public ResponseEntity updatePerson(@PathVariable Long id, @RequestBody Person person) {
         return service.updatePerson(id, person);
     }
