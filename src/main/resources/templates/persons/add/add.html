@@ -1,22 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Add</title>
 </head>
 <body>
-<form action="#" th:action="@{/persons/add}" th:object="${person}" method="POST">
+<form action="/persons/add" method="POST">
     <div class="form-group">
         <input class="form-control" style="text-align: center" id="first" placeholder="First name" required/>
         <input class="form-control" style="text-align: center" id="last" placeholder="Last name" required/>
         <input class="form-control" style="text-align: center" id="email" placeholder="E-mail" required/>
     </div>
     <div class="col-md-6">
-        <button method="POST" action="addOne-btn" value="addOne"
-                modelAttribute="add-one" type="button" name="one"
-                id="addOne" class="btn btn-default">Add Person</button>
+        <button type="button" name="one" id="addOne" onclick="createUser();" class="btn btn-default">Add Person</button>
     </div>
 </form>
-
+<script>
+    function createUser() {
+        let request = new XMLHttpRequest();
+        const firstName = document.querySelector("#first").value
+        const lastName = document.querySelector("#last").value
+        const email = document.querySelector("#email").value
+        const body = {
+            first_name: firstName,
+            last_name: lastName,
+            email: email
+        }
+        request.open("POST", "/persons/add");
+        request.setRequestHeader("Accept","application/json")
+        request.setRequestHeader("Content-Type","application/json")
+        request.send(JSON.stringify(body));
+    }
+</script>
 </body>
 </html>

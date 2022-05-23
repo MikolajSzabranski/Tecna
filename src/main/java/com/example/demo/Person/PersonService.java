@@ -1,9 +1,8 @@
-package com.example.demo;
+package com.example.demo.Person;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
@@ -11,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Service
-public class Service {
+public class PersonService {
     private PersonRepository personRepository;
 
-    public Service(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 

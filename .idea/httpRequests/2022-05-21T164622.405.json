@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-05-21T14:46:21.907+00:00",
+  "status": 405,
+  "error": "Method Not Allowed",
+  "path": "/persons/up"
+}

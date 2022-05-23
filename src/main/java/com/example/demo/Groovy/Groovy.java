@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Groovy;
 
 import javax.persistence.*;
 

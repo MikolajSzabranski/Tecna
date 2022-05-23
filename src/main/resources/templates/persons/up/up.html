@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Add</title>
+    <title>Update</title>
 </head>
 <body>
-<form action="/persons/add" method="POST">
+<form action="/persons/up" method="POST">
     <div class="form-group">
         <input class="form-control" style="text-align: center" id="first" placeholder="First name" required/>
         <input class="form-control" style="text-align: center" id="last" placeholder="Last name" required/>
         <input class="form-control" style="text-align: center" id="email" placeholder="E-mail" required/>
     </div>
     <div class="col-md-6">
-        <button type="button" name="one" id="addOne" onclick="createUser();" class="btn btn-default">Add Person</button>
+        <button type="button" name="one" id="addOne" onclick="createUser();" class="btn btn-default">Update Person</button>
     </div>
 </form>
 <script>
@@ -26,7 +26,7 @@
             last_name: lastName,
             email: email
         }
-        request.open("POST", "/persons/add");
+        request.open("PUT", "/persons/up/{id}");
         request.setRequestHeader("Accept","application/json")
         request.setRequestHeader("Content-Type","application/json")
         request.send(JSON.stringify(body));

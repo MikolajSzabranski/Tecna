@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.Person;
+
+import com.example.demo.Groovy.Groovy;
 
 import javax.persistence.*;
 

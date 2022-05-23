@@ -4,6 +4,28 @@ Content-Type: application/json
 {
   "first_name": "a",
   "last_name": "b",
+  "email": "saa"
+}
+
+###
+
+POST http://localhost:8080/persons/add
+Content-Type: application/json
+
+{
+  "first_name": "a",
+  "last_name": "b",
+  "email": "s"
+}
+
+###
+
+POST http://localhost:8080/persons/add
+Content-Type: application/json
+
+{
+  "first_name": "a",
+  "last_name": "b",
   "email": "s"
 }
 

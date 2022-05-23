@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-05-22T12:58:34.979+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/persons/add"
+}
