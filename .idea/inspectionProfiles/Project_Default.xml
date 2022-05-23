@@ -20,6 +20,8 @@
           <option value="  &quot;lastName&quot;" />
           <option value="{" />
           <option value="}" />
+          <option value="&quot;Id&quot;" />
+          <option value="  &quot;Id&quot;" />
         </set>
       </option>
     </inspection_tool>
