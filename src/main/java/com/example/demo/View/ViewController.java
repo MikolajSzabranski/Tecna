@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.View;
 
 import com.example.demo.Person.Person;
 import org.springframework.stereotype.Controller;
@@ -12,8 +12,13 @@ public class ViewController {
         return "persons/add/add";
     }
 
-    @GetMapping(value = "/persons/up/{id}")
+    @GetMapping(value = "/persons/up")
     public String getFormUpdate(@ModelAttribute Person person) {
         return "persons/up/up";
+    }
+
+    @GetMapping(value = "/persons/delete")
+    public String getFormDelete(@ModelAttribute Person person) {
+        return "persons/delete/delete";
     }
 }

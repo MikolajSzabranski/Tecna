@@ -39,47 +39,28 @@ public class PersonService {
         }
     }
 
-    public void create(String first, String last, String email){
-        Person person = new Person(first,last,email);
-        Optional<Person> findPersonByEmail=personRepository.findPersonByEmail(person.getEmail());
-        if (findPersonByEmail.isPresent()){
+    public void create(String first, String last, String email) {
+        Person person = new Person(first, last, email);
+        Optional<Person> findPersonByEmail = personRepository.findPersonByEmail(person.getEmail());
+        if (findPersonByEmail.isPresent()) {
             throw new IllegalStateException("email taken");
         }
         personRepository.save(person);
     }
 
-
-    public ResponseEntity updatePerson(@PathVariable Long id, @RequestBody Person person) {
-        Person currentPerson = personRepository.findById(id).orElseThrow(RuntimeException::new);
-        currentPerson.setFirst_name(person.getFirst_name());
-        currentPerson.setLast_name(person.getLast_name());
+    public ResponseEntity updatePerson(@RequestBody Person person) {
+        Person currentPerson = personRepository.findById(person.getId()).orElseThrow(RuntimeException::new);
+        currentPerson.setFirstName(person.getFirstName());
+        currentPerson.setLastName(person.getLastName());
         currentPerson.setEmail(person.getEmail());
         currentPerson = personRepository.save(person);
 
         return ResponseEntity.ok(currentPerson);
     }
 
-//    public ResponseEntity<Person> update(@PathVariable("id") long id, @PathVariable String firstName, @PathVariable String lastName, @PathVariable String mail) { //@RequestBody Person person,
-//        Optional<Person> tutorialData = personRepository.findById(id);
-//        if (tutorialData.isPresent()) {
-//            Person _person = tutorialData.get();
-//            _person.setFirst_name(firstName);
-//            return new ResponseEntity<>(personRepository.save(_person), HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-
-    public ResponseEntity delete(@PathVariable Long id) {
-        personRepository.deleteById(id);
+    public ResponseEntity delete(@RequestBody Person person) {
+        Person currentPerson = personRepository.findPersonByEmail(person.getEmail()).orElseThrow(RuntimeException::new);
+        personRepository.delete(currentPerson); //deleteById(id);
         return ResponseEntity.ok().build();
     }
-
-    /*public void addNewPerson(Person person){
-        Optional<Person> findPersonByEmail=personRepository.findPersonByEmail(person.getEmail());
-        if (findPersonByEmail.isPresent()){
-            throw new IllegalStateException("email taken");
-        }
-        personRepository.save(person);
-    }*/
 }

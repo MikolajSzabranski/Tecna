@@ -26,26 +26,27 @@ public class PersonController {
 
     @PostMapping(value = "/persons/add")
     public void create(@RequestBody Person person) {
-        personService.create(person.getFirst_name(), person.getLast_name(), person.getEmail());
+        personService.create(person.getFirstName(), person.getLastName(), person.getEmail());
     }
 
-    @PutMapping("/persons/up/{id}")
-    public ResponseEntity updatePerson(@PathVariable Long id, @RequestBody Person person) {
-        return personService.updatePerson(id, person);
+    @PutMapping("/persons/up")
+    public ResponseEntity updatePerson(@RequestBody Person person) {
+        return personService.updatePerson(person);
     }
 //    @RequestMapping("/persons/up/{id}/{firstName}/{lastName}/{mail}")
 //    public ResponseEntity<Person> update(@PathVariable("id") long id, @PathVariable String firstName, @PathVariable String lastName, @PathVariable String mail) { //@RequestBody Person person,
 //        return service.update(id, firstName, lastName, mail);
 //    }
 
-    @RequestMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
-        return personService.delete(id);
+//    @RequestMapping("/{id}")
+//    public ResponseEntity delete(@PathVariable Long id) {
+//        return personService.delete(id);
+//    }
+
+    @RequestMapping("/persons/delete")
+    public ResponseEntity deletePerson(@RequestBody Person person) {
+        return personService.delete(person);
     }
 
-//    @PostMapping
-//    public void addNewPerson(@RequestBody Person person){
-//        service.addNewPerson(person);
-//    }
 }
 

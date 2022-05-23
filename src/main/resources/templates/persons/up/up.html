@@ -5,8 +5,9 @@
     <title>Update</title>
 </head>
 <body>
-<form action="/persons/up" method="POST">
+<form action="/persons/up" method="PUT">
     <div class="form-group">
+        <input class="form-control" style="text-align: center" id="id" placeholder="Id" required/>
         <input class="form-control" style="text-align: center" id="first" placeholder="First name" required/>
         <input class="form-control" style="text-align: center" id="last" placeholder="Last name" required/>
         <input class="form-control" style="text-align: center" id="email" placeholder="E-mail" required/>
@@ -18,15 +19,17 @@
 <script>
     function createUser() {
         let request = new XMLHttpRequest();
+        const id = document.querySelector("#id").value
         const firstName = document.querySelector("#first").value
         const lastName = document.querySelector("#last").value
         const email = document.querySelector("#email").value
         const body = {
-            first_name: firstName,
-            last_name: lastName,
+            Id: id,
+            firstName: firstName,
+            lastName: lastName,
             email: email
         }
-        request.open("PUT", "/persons/up/{id}");
+        request.open("PUT", "/persons/up");
         request.setRequestHeader("Accept","application/json")
         request.setRequestHeader("Content-Type","application/json")
         request.send(JSON.stringify(body));

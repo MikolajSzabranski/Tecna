@@ -2,7 +2,7 @@
 <dataSource name="person">
   <database-model serializer="dbm" dbms="H2" family-id="H2" format-version="4.39">
     <root id="1">
-      <ServerVersion>2.1.210</ServerVersion>
+      <ServerVersion>2.1.212</ServerVersion>
     </root>
     <database id="2" parent="1" name="PERSON">
       <Current>1</Current>
@@ -102,7 +102,7 @@
     <collation id="95" parent="2" name="LITHUANIAN"/>
     <collation id="96" parent="2" name="LITHUANIAN_LITHUANIA"/>
     <collation id="97" parent="2" name="MACEDONIAN"/>
-    <collation id="98" parent="2" name="MACEDONIAN_MACEDONIA"/>
+    <collation id="98" parent="2" name="MACEDONIAN_NORTH_MACEDONIA"/>
     <collation id="99" parent="2" name="MALAY"/>
     <collation id="100" parent="2" name="MALAY_MALAYSIA"/>
     <collation id="101" parent="2" name="MALTESE"/>
@@ -176,7 +176,7 @@
     </sequence>
     <sequence id="165" parent="163" name="PERSON_SEQUENCE">
       <DataType>BIGINT|0s</DataType>
-      <SequenceIdentity>1(2)..9223372036854775807</SequenceIdentity>
+      <SequenceIdentity>1(5)..9223372036854775807</SequenceIdentity>
     </sequence>
     <table id="166" parent="163" name="GROOVY"/>
     <table id="167" parent="163" name="PERSON"/>

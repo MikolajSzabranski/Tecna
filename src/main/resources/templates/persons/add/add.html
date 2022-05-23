@@ -22,8 +22,8 @@
         const lastName = document.querySelector("#last").value
         const email = document.querySelector("#email").value
         const body = {
-            first_name: firstName,
-            last_name: lastName,
+            firstName: firstName,
+            lastName: lastName,
             email: email
         }
         request.open("POST", "/persons/add");
